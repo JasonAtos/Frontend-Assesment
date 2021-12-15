@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Test</title>
+        <link rel="stylesheet" href="css/paginate.css">
+        <link rel="stylesheet" href="css/ligne.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!--Bootbox-->
+        <script language="JavaScript" type="text/javascript"  src="Bootbox/bootbox.js"></script>
+        <script language="JavaScript" type="text/javascript"  src="Bootbox/bootbox.locales.js"></script>
+
+        <script type="text/javascript" src="js/paginate.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script> 
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1>Frontend Assesment Jason Bañuelos</h1>
+            </div>
+            <div class="panel">
+                <div class="body">
+                    <div class="input-group">
+                        <label for="searchBox">Filtrar</label>
+                        <input type="search" id="searchBox" placeholder="Filtrar...">
+                    </div>
+                </div>
+            </div>
+            <table class="myTable table hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Oficial Name</th>
+                        <th scope="col">Capital</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Population</th>
+                        <th scope="col">Flag</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </body>
+</html>
