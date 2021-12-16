@@ -21,12 +21,14 @@
         <script language="JavaScript" type="text/javascript"  src="Bootbox/bootbox.locales.js"></script>
 
         <script type="text/javascript" src="js/paginate.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script> 
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="js/countriesInfo.js"></script>
+
     </head>
     <body>
         <div class="container">
             <div>
-                <h1>Frontend Assesment Jason Bañuelos</h1>
+                <h3>Frontend Assesment Jason Bañuelos</h3>
             </div>
             <div class="panel">
                 <div class="body">
@@ -44,11 +46,26 @@
                         <th scope="col">Region</th>
                         <th scope="col">Language</th>
                         <th scope="col">Population</th>
-                        <th scope="col">Flag</th>
+                        <th scope="col">Flag</th>                        
                     </tr>
                 </thead>
                 <tbody class="tbody" id="tbody"></tbody>
             </table>
+                        
+            <button type="button" class="btn btn-primary" id="btnAdd">Primary</button>
+            <br><br>                             
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw_QFWKY0A3wgYC7u37NfLQhuzpXco5Hk"></script>
+            <table class="table hover" id="bordersTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Country</th>
+                        <th scope="col">Border</th>
+                        <th scope="col">Name in spanish</th>
+                    </tr>
+                </thead>
+                <tbody class="tableBordersBody" id="tableBordersBody"></tbody>
+            </table>
+            <div id="map"></div>
         </div>
     </body>
 </html>
