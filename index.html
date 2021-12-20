@@ -16,39 +16,21 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        <!--Bootbox-->
-        <script language="JavaScript" type="text/javascript"  src="Bootbox/bootbox.js"></script>
-        <script language="JavaScript" type="text/javascript"  src="Bootbox/bootbox.locales.js"></script>
-
         <script type="text/javascript" src="js/paginate.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script> 
     </head>
     <body>
-        <div class="container">
+        <div class="container" id="container">
             <div>
-                <h1>Frontend Assesment Jason Bañuelos</h1>
+                <h1>Workshop 3 by Jason Bañuelos</h1>
             </div>
-            <div class="panel">
-                <div class="body">
-                    <div class="input-group">
-                        <label for="searchBox">Filtrar</label>
-                        <input type="search" id="searchBox" placeholder="Filtrar...">
-                    </div>
-                </div>
-            </div>
-            <table class="myTable table hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Oficial Name</th>
-                        <th scope="col">Capital</th>
-                        <th scope="col">Region</th>
-                        <th scope="col">Language</th>
-                        <th scope="col">Population</th>
-                        <th scope="col">Flag</th>
-                    </tr>
-                </thead>
-                <tbody class="tbody" id="tbody"></tbody>
-            </table>
+
+            <button type="button" class="btn btn-primary" id="mainButton">Create Options</button>
+            <br/><br/>            
         </div>
+
+        <footer class="container">
+            <h1><span class="badge badge-secondary" id="result"></span></h1>
+        </footer>
     </body>
 </html>

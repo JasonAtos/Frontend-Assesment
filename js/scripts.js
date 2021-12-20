@@ -1,80 +1,65 @@
 $(document).ready(() => {
-    const tbody = document.getElementById("tbody");
-    const list = document.createDocumentFragment();
-    const url = 'https://restcountries.com/v3.1/all';
+    const container = document.getElementById("container");
+    let elementsExist = false;    
+    const reg = new RegExp("^[0-9]*$");
+    let body = document.getElementsByTagName("body")[0];
+    let idInput = 0;
+    let result = document.getElementById("result");
+    result.hidden = true;
 
-    let options = {
-        numberPerPage:5, //Cantidad de datos por pagina
-        goBar:true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
-        pageCounter:true, //Contador de paginas, en cual estas, de cuantas paginas
-    };
+    $("#mainButton").click(() =>
+    {    
+        if(elementsExist) return
+        
+        elementsExist = true;
+        let btn1 = document.createElement("button");
+        btn1.innerHTML = "1. Change background color randomly at double click";
+        btn1.className = "btn btn-warning";
+        btn1.id = "btn1";        
+        btn1.addEventListener("dblclick", handleClickBtn1);
 
-    let filterOptions = {
-        el:'#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
-    };
+        let btn2 = document.createElement("button");
+        btn2.innerHTML = "2. Create input for numbers only";
+        btn2.className = "btn btn-success";
+        btn2.onclick = handleClickBtn2;
+        
+        container.appendChild(btn1);
+        container.appendChild(btn2);
+    });
 
-    fetch(url)
-    .then( response => response.json())
-    .then(data => { 
-        data.sort(
-            (a,b) => 
-            a.altSpellings[a.altSpellings.length-1].
-            localeCompare(b.altSpellings[b.altSpellings.length-1])
-        );
 
-        data.map(country => {
-            let {altSpellings, capital, region, languages, population, flags:{png}} = country;
-
-            let tr = document.createElement("tr");
-            let tdNombre = document.createElement("td");
-            let tdCapital = document.createElement("td");
-            let tdRegion = document.createElement("td");
-            let tdLanguages = document.createElement("td");
-            let tdPopulation = document.createElement("td");
-            let tdImage = document.createElement("td");
-            
-            let nombreOficial = altSpellings[altSpellings.length-1];
-            
-            tdNombre.innerHTML = `${nombreOficial}.`
-            tdCapital.innerHTML = `${capital}`;
-            tdRegion.innerHTML = `${region}`;
-            tdLanguages.innerHTML = `${
-                languages && Object.keys(languages).map(key => languages[key])
-            }`;
-            tdPopulation.innerHTML = `${population}`;
-            tdImage.innerHTML = `<img src = ${png} width='100px' />`;
-
-            tr.appendChild(tdNombre);
-            tr.appendChild(tdCapital);
-            tr.appendChild(tdRegion);
-            tr.appendChild(tdLanguages);
-            tr.appendChild(tdPopulation);
-            tr.appendChild(tdImage)            
-
-            // tr.onclick = () => handleClick(nombreOficial);            
-
-            list.appendChild(tr);            
-        });
-        tbody.appendChild(list);
-
-        document.querySelectorAll(".myTable").forEach(e => {                              
-            e.addEventListener("click", (e) => {                
-                let oficialName = e.path[1].innerText.split(".")[0]; 
-                console.log(oficialName);
-                handleClick(oficialName);
-            })
-        }); 
-
-        paginate.init('.myTable',options,filterOptions);    
-    });   
-
-    const handleClick = (nombreOficial) => {     
-        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${nombreOficial}`)
-        .then(response => response.json())
-        .then(data => {
-            let message = data.extract_html ? data.extract_html : data.detail;            
-            bootbox.alert(message)
-        });
+    const handleClickBtn1 = () => {
+        let randomColor = Math.floor(Math.random()*16777215).toString(16); 
+        body.style.backgroundColor = `#${randomColor}`;        
     }
 
+    const handleClickBtn2 = () => {        
+        const br = document.createElement("br");
+        let input = document.createElement("input"); 
+        input.className = "form-control-sm";
+        input.placeholder = "Numbers only"
+        idInput++;
+        input.id = `input${idInput}`;        
+        input.onkeydown = (e) => numbersOnly(e);
+        input.onblur = blurEvent;  
+        container.appendChild(br);      
+        container.appendChild(input);    
+    } 
+
+    const numbersOnly = ({key}) => {           
+        if(reg.test(key)===false && key !== "Backspace") return false;
+    }
+
+    const blurEvent = () => {
+        let sumaTotal = 0;
+        for(let i = 1; i<=idInput; i++){
+            let inputValue = $(`#input${i}`).val();
+            if(inputValue)            
+                sumaTotal += parseInt(inputValue);
+        }
+        if(result.hidden)
+            result.hidden = false;                    
+        result.innerText = `Total: ${sumaTotal}`;              
+    }
+    
 });
