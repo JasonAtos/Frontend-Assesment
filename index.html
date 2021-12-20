@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Test</title>
+        <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/paginate.css">
-        <link rel="stylesheet" href="css/ligne.css">
+        <link rel="stylesheet" href="css/ligne.css">        
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,19 +24,22 @@
         <script type="text/javascript" src="js/paginate.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script> 
     </head>
-    <body>
+    <body>    
         <div class="container">
-            <div>
-                <h1>Frontend Assesment Jason Bañuelos</h1>
+            <div class="panel">                
+                <div>                
+                    <label for="pet-select">Column to search:</label>
+                    <select id="customSelect" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="-1" selected>Open this select menu</option>
+                        <option value="0">Oficial Name</option>
+                        <option value="1">Capital</option>                        
+                        <option value="2">Region</option>
+                        <option value="4">Population</option>
+                    </select>
+                    <input type="search" id="customSearch" placeholder="Search...">
+                </div>              
             </div>
-            <div class="panel">
-                <div class="body">
-                    <div class="input-group">
-                        <label for="searchBox">Filtrar</label>
-                        <input type="search" id="searchBox" placeholder="Filtrar...">
-                    </div>
-                </div>
-            </div>
+  
             <table class="myTable table hover">
                 <thead class="table-dark">
                     <tr>
@@ -47,8 +51,18 @@
                         <th scope="col">Flag</th>
                     </tr>
                 </thead>
-                <tbody class="tbody" id="tbody"></tbody>
+                <tbody class="tbody" id="tbody"></tbody>                
             </table>
+            <center id="noData">                             
+                <input type="color" id="favcolor" value="#ff0000"><br><br>   
+                <span id="editable">No data to display</span>
+            </center>
+        </div>
+        <div id="myModal" class="modalMine">                            
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modalRelleno"></div>              
+            </div>          
         </div>
     </body>
 </html>
